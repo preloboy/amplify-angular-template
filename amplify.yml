@@ -7,6 +7,12 @@ backend:
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
+    preBuild: 
+      commands: 
+        - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash 
+        - source ~/.nvm/nvm.sh 
+        - nvm install 18.19.0 
+        - nvm use 18.19.0 
     build:
       commands:
         - npm install -g @angular/cli
